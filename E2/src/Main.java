@@ -1,5 +1,21 @@
 record Estudiant (String nom, Integer edat, Boolean matriculat) {
     // implementa els mètodes
+    boolean comparaPorNombre(Estudiant b){
+        return this.nom.compareTo(b.nom) < 0;
+    }
+
+    boolean comparaPerEdat(Estudiant b) {
+        return this.edat < b.edat;
+    }
+
+    boolean comparaPerMatriculat(Estudiant b) {
+    if (this.matriculat.equals(b.matriculat)) {
+        return false;
+    }
+    return !this.matriculat;
+    }
+
+
 }
 
 interface Comparador<T> {
@@ -47,14 +63,20 @@ public class Main {
 
         System.out.println("\nORDENATS PER NOM");
         // ordena
+        estudiants.ordenar(Estudiant::comparaPorNombre);
         // mostra
+        estudiants.mostrar();
 
         System.out.println("\nORDENATS PER EDAT");
         // ordena
+        estudiants.ordenar(Estudiant::comparaPerEdat);
         // mostra
+        estudiants.mostrar();
 
         System.out.println("\nORDENATS PER MATRICULAT");
         // ordena
+        estudiants.ordenar(Estudiant::comparaPerMatriculat);
         // mostra
+        estudiants.mostrar();
     }
 }
